@@ -31,15 +31,44 @@ A distributed 3-node architecture ensuring zero-latency processing via high-freq
 2. **Node A (The Body):** 2-DOF Gimbal. Drives physical movement using a custom **Silent PWM** logic to prevent electrical humming.
 3. **Node C (The Face):** OLED Display. Independently computes and renders morphological expressions.
 
-### 📂 Repository Structure
-Bionic-Microbit-Robot/
-├── src/
-│   ├── node_a_actuator.py    # Gimbal servo control & Silent PWM
-│   ├── node_b_sensor.py      # 3D tracking & Expo mixing curve
-│   └── node_c_display.py     # OLED morphing engine
-├── docs/
-│   └── hardware_layout.md    # BOM & Wiring guide
-└── README.md                 # You are here
+## 🛒 Bill of Materials (BOM)
+
+This project consists of three independent nodes, each with a specific power strategy to balance high-current demands and portability.
+
+| Component | Qty | Notes |
+| :--- | :---: | :--- |
+| **BBC Micro:bit** | 3 | Main controllers for Node A, B, and C (V1/V2). |
+| **IO Expansion Board** | 2 | For Node A (Servos) and Node C (OLED). |
+| **MG90S Servo** | 2 | Metal gear servos for the 2-DOF gimbal (Node A). |
+| **SSD1306 OLED Display** | 1 | 0.96" I2C interface (128x64) for Node C. |
+| **USB Cable** | 1 | Power source for Node A (High current for servos). |
+| **3.7V LiPo Battery** | 1 | 500mAh JST-connector battery for Node B. |
+| **3V AAA Battery Box** | 1 | 2-cell battery holder for Node C. |
+| **Dupont Wires** | 1 Set | Female-to-Female jumpers for I2C and servos. |
+
+### 🔌 Wiring Guide
+
+#### **Node A: Actuator Controller**
+* **Power:** Powered via USB cable (for stable servo operation).
+* **Servos:** X-axis (Pitch) to **P0**, Y-axis (Roll) to **P1** on the expansion board.
+
+#### **Node B: Handheld Sensor**
+* **Power:** 3.7V LiPo battery plugged into the Micro:bit JST port.
+* **Wiring:** No external wiring required (uses built-in accelerometer).
+
+#### **Node C: Display Node**
+* **Power:** 3V (2x AAA) battery box connected to expansion board pins.
+* **OLED:** **SCL** to **P19**, **SDA** to **P20**, **VCC** to **3V3**, **GND** to **GND**.
+
+### 📂 Directory Structure
+Microbit-Distributed-Gimbal/
+├── node_a_actuator.py     # Node A: Actuator (Silent PWM & Motion Smoothing)
+├── node_b_sensor.py       # Node B: Sensor (3D Vector Calc & Expo Mixing)
+├── node_c_display.py      # Node C: Display (6-Param Morphological Engine)
+├── ssd1306.py             # Driver: Pure Python OLED Library
+├── demo.gif               # Project demonstration animation
+├── README.md              # Project documentation (You are here)
+└── LICENSE                # MIT License
 
 ### 🚀 Quick Start
 1. Flash the code from the src/ directory to your three respective Micro:bits.
@@ -74,15 +103,44 @@ Bionic-Microbit-Robot/
 2. **Node A (云台执行端):** 驱动 2 自由度云台，采用 **Silent PWM** 逻辑彻底消除电机啸叫。
 3. **Node C (视觉渲染端):** 搭载 0.96" OLED 屏幕，独立进行表情的矩阵变换与渲染。
 
-### 📂 目录结构
-Bionic-Microbit-Robot/
-├── src/
-│   ├── node_a_actuator.py    # 云台端：Silent PWM 与运动平滑算法
-│   ├── node_b_sensor.py      # 传感器端：3D 向量计算与 Expo 混控
-│   └── node_c_display.py     # 视觉端：6 参数形态学渲染引擎
-├── docs/
-│   └── hardware_layout.md    # 硬件清单与接线逻辑
-└── README.md                 # 当前说明文档
+## 🛒 物料清单 (BOM)
+
+本项目由三个独立的节点组成，每个节点根据实际功耗和便携性需求采用了不同的供电方案。
+
+| 零件名称 | 数量 | 规格/备注 |
+| :--- | :---: | :--- |
+| **BBC Micro:bit** | 3 | 主控板，Node A、B、C 各使用一片（V1/V2均可）。 |
+| **IO 扩展板** | 2 | 用于 Node A（连接舵机）和 Node C（连接屏幕）。 |
+| **MG90S 金属舵机** | 2 | 用于构建 Node A 的两自由度云台。 |
+| **SSD1306 OLED 屏幕** | 1 | 0.96寸 I2C 接口，用于 Node C 的视觉渲染。 |
+| **USB 数据线** | 1 | 用于 Node A 供电，确保舵机转动时电流稳定。 |
+| **3.7V 锂电池** | 1 | 500mAh JST 接口，用于 Node B，实现极致便携。 |
+| **3V 七号电池盒** | 1 | 两节 AAA 电池，为 Node C 屏幕端独立供电。 |
+| **杜邦线** | 1 套 | 母对母跳线，用于连接 I2C 设备和舵机。 |
+
+### 🔌 接线指南
+
+#### **Node A: 云台执行端**
+* **供电：** 使用 USB 线连接至电脑或充电宝（舵机耗电较大，建议 USB 供电）。
+* **舵机：** X轴（俯仰）接扩展板 **P0**，Y轴（横滚）接扩展板 **P1**。
+
+#### **Node B: 手持传感器端**
+* **供电：** 3.7V 锂电池直接插在 Micro:bit 背面的 JST 电池接口。
+* **接线：** 无需外部接线（使用主控板内置加速度计）。
+
+#### **Node C: 视觉显示端**
+* **供电：** 3V 电池盒连接至扩展板的电源引脚。
+* **屏幕：** **SCL** 接 **P19**，**SDA** 接 **P20**，**VCC** 接 **3V3**，**GND** 接 **GND**。
+
+### 📂 目录结构 (Directory Structure)
+Microbit-Distributed-Gimbal/
+├── node_a_actuator.py     # Node A: 云台端 (Silent PWM 与运动平滑)
+├── node_b_sensor.py       # Node B: 传感器端 (3D 向量计算与 Expo 混控)
+├── node_c_display.py      # Node C: 视觉端 (6 参数形态学渲染引擎)
+├── ssd1306.py             # 底层驱动: 纯 Python 版 OLED 驱动库
+├── demo.gif               # 项目演示动图
+├── README.md              # 项目说明文档与 BOM 清单
+└── LICENSE                # MIT 开源协议
 
 ### 🚀 快速开始
 将 src/ 文件夹下的代码分别烧录至三个 Micro:bit 节点。
