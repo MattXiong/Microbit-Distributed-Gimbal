@@ -61,6 +61,8 @@ This project consists of three independent nodes, each with a specific power str
 * **OLED:** **SCL** to **P19**, **SDA** to **P20**, **VCC** to **3V3**, **GND** to **GND**.
 
 ### 📂 Directory Structure
+
+```text
 Microbit-Distributed-Gimbal/
 ├── node_a_actuator.py     # Node A: Actuator (Silent PWM & Motion Smoothing)
 ├── node_b_sensor.py       # Node B: Sensor (3D Vector Calc & Expo Mixing)
@@ -133,6 +135,8 @@ Microbit-Distributed-Gimbal/
 * **屏幕：** **SCL** 接 **P19**，**SDA** 接 **P20**，**VCC** 接 **3V3**，**GND** 接 **GND**。
 
 ### 📂 目录结构 (Directory Structure)
+
+```text
 Microbit-Distributed-Gimbal/
 ├── node_a_actuator.py     # Node A: 云台端 (Silent PWM 与运动平滑)
 ├── node_b_sensor.py       # Node B: 传感器端 (3D 向量计算与 Expo 混控)
