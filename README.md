@@ -7,6 +7,10 @@ A distributed 3-node bionic robot system with 2-DOF gimbal and emotional OLED di
 
 🌍 Read this in: [English](#english) | [中文](#中文)
 
+<p align="center">
+  <img src="demo.gif" alt="Bionic Robot Demonstration" width="600px">
+</p>
+
 ---
 
 <h2 id="english">🇬🇧 English</h2>
