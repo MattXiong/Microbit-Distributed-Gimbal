@@ -71,15 +71,15 @@ Microbit-Distributed-Gimbal/
 ├── demo.gif               # Project demonstration animation
 ├── README.md              # Project documentation (You are here)
 └── LICENSE                # MIT License
+```
 
 ### 🚀 Quick Start
-1. Flash the code from the src/ directory to your three respective Micro:bits.
 
-2. Ensure all nodes are set to the same radio channel (group=22).
+Flash the respective code files to three separate Micro:bit boards (Note: Node C also requires the `ssd1306.py` driver to be flashed together).
 
-3. Power on the system. Hold the Node B sensor level and press Button B for a quick one-click zero-point calibration.
-
-4. Tilt the sensor to interact!
+1. **Sync Channel:** Ensure the radio group is identical across all three codes (default is `group=22`).
+2. **Zero Calibration:** After powering on, hold the Node B sensor horizontally and press **Button B** for a one-click zero calibration.
+3. **Interact:** Tilt the handheld sensor and enjoy the ultra-smooth bionic interaction!
 
 ### 👨‍💻 Author
 * **XIONG Shenli** (Solo Developer)
@@ -145,15 +145,15 @@ Microbit-Distributed-Gimbal/
 ├── demo.gif               # 项目演示动图
 ├── README.md              # 项目说明文档与 BOM 清单
 └── LICENSE                # MIT 开源协议
+```
 
 ### 🚀 快速开始
-将 src/ 文件夹下的代码分别烧录至三个 Micro:bit 节点。
 
-1. 确保代码中的无线电频道一致 (group=22)。
+将对应节点的代码分别烧录至三个 Micro:bit 主板中（注：Node C 还需要同时烧录 `ssd1306.py` 驱动文件）。
 
-2. 系统通电后，水平握住传感器 Node B，按下 Button B 进行一键零点校准。
-
-3. 倾斜传感器，开始与你的机器人互动！
+1. **统一频道：** 确保三份代码中的无线电频道保持一致（默认 `group=22`）。
+2. **零点校准：** 系统通电后，水平握住传感器 Node B，按下 **Button B** 进行一键零点校准。
+3. **开始互动：** 倾斜手里的传感器，体验丝滑的仿生机器人联动！
 
 ### 👨‍💻 开发者
 * **熊珅黎 (XIONG Shenli)** - 独立开发者
